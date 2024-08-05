@@ -1,6 +1,7 @@
 package com.example.shop;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
     @GetMapping("/list")
     String list(Model model){
@@ -30,10 +32,7 @@ public class ItemController {
     @Transactional
     @PostMapping("/add")
     String addPost( String title, Integer price) {
-        Item item = new Item();
-        item.setTitle(title);
-        item.setPrice(price);
-        itemRepository.save(item);
+        itemService.saveItem(title, price);
         return "redirect:/list";
     }
     @Transactional
@@ -48,5 +47,6 @@ public class ItemController {
         }
 
     }
+
 
 }
