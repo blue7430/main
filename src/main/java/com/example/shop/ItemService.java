@@ -15,9 +15,9 @@ public class ItemService {
         item.setPrice(price);
         itemRepository.save(item);
     }
-    public void updateItem(String title, Integer price){
+    public void updateItem(String title, Integer price, Long id){
         Item item = new Item();
-        item.setId(1L);
+        item.setId(id);
         item.setTitle(title);
         item.setPrice(price);
         itemRepository.save(item);

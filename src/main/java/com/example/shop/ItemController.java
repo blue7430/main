@@ -60,11 +60,7 @@ public class ItemController {
     @Transactional
     @PostMapping("/update")
     String updatePost(String title, Integer price, Long id) {
-        Item item = new Item();
-        item.setId(id);
-        item.setTitle(title);
-        item.setPrice(price);
-        itemRepository.save(item);
+        itemService.updateItem(title, price, id);
         return "redirect:/list";
     }
 
