@@ -7,19 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="/main.css" rel="stylesheet" >
+    <style>
+
+    </style>
 </head>
 <body>
-
 <div th:replace="~{nav.html::navbar}"></div>
+<h1>상품 수정</h1>
 
-    <div class="card" th:each="i : ${items}">
-        <img src="https://placehold.co/300">
-        <div>
-            <h4 th:text="${i.title}"></h4>
-            <a th:href="@{'/detail/' + ${i.id}}">링크</a>
-            <p th:text="${i.price +' 원'}"></p>
-            <a th:href="@{'/edit/' + ${i.id}}">수정</a>
-        </div>
-    </div>
+<form action="/update" method="POST">
+    <input name="id" th:value="${data.id}">
+    <input name="title" th:value="${data.title}">
+    <input name="price" th:value="${data.price}">
+    <button type="submit">전송</button>
+</form>
+
 </body>
 </html>

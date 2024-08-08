@@ -15,4 +15,11 @@ public class ItemService {
         item.setPrice(price);
         itemRepository.save(item);
     }
+    public void updateItem(String title, Integer price){
+        Item item = new Item();
+        item.setId(1L);
+        item.setTitle(title);
+        item.setPrice(price);
+        itemRepository.save(item);
+    }
 }
